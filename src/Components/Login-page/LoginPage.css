@@ -1,0 +1,78 @@
+body{
+background-color: #fafafa;
+
+}
+
+.loginpage_main{
+    display: flex;
+    margin-top: 150px;
+
+}
+
+.loginpage_logo{
+    width: 175px;
+    
+}
+
+.loginpage_formcomponant{
+    width: 380px;
+    border: 2px solid #dbdbdb;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    
+
+}
+
+.loginpage_signin{
+
+
+}
+
+
+
+.loginpage_text{
+    width: 258px;
+    height: 36px;
+    margin: 5px;
+    border: 1px solid #dbdbdb;
+    background-color: #fafafa;
+    padding-left: 10px;
+    border-radius: 5px;
+
+}
+
+.loginpage_button{
+    width: 266px;
+    height: 36;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #0395f6;
+    background-color: #0395f6;
+    color: white;
+
+
+}
+
+.forget_pass{
+    color: #395185;
+    margin-top: 25px;
+    font-size: 14px;
+    text-align: center;
+
+}
+.loginpage_signupbar{
+    height: 43px;
+    width: 380px;
+    border: 2px solid #dbdbdb;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 100px;
+
+}
+
+.element1et2{
+    padding: 10px;
+    
+}
