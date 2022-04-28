@@ -3,3 +3,19 @@
     background-color: white;
     border-bottom: 1px solid #dbdbdb;
 }
+.navbar_logo{
+margin-top: -25px;
+}
+
+.searchbar{
+    width: 215px;
+    height: 25px;
+    margin-top: 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.menu{
+    margin: 15px 10px;
+}
