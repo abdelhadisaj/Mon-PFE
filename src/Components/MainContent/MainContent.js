@@ -15,8 +15,8 @@ export class MainContent extends Component {
              <StoryBar/>
              <Publication/>
            </Grid>
-           <Grid item xs={2}>jdlldodnjd</Grid>
-           <Grid item xs={2}>jdlldodnjd</Grid>
+           <Grid item xs={2}></Grid>
+           <Grid item xs={2}></Grid>
            
           </Grid>
       </div>

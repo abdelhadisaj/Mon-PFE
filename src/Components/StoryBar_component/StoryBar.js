@@ -4,6 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import profile from '../../images/profile.png';
 
 class StoryBar extends Component {
+
+    
     constructor(props){
         super(props);
         this.state={
@@ -31,11 +33,11 @@ class StoryBar extends Component {
             "storyimg":"../../images/profile.png"
         }
 
-    ]
+    ];
 
     this.setState({storyList: data});
 
-  }
+  };
          
   render() {
     return (
@@ -58,4 +60,4 @@ class StoryBar extends Component {
   }
 }
 
-export default StoryBar
+export default StoryBar;
