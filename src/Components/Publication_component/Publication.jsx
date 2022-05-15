@@ -53,12 +53,15 @@ componentDidMount() {
         {
           this.state.postArray.map((item, index) => {
 
+            return (            
             <Post id={item.postId} 
-                  userName={item.userName} 
-                  postImage= {item.postImage} 
-                  likes={item.likes}
-                  timepubliction={item.postTime}
-            />
+              userName={item.userName} 
+              postImage= {item.postImage} 
+              likes={item.likes}
+              timepubliction={item.postTime}
+        />)
+
+
             
           })
 

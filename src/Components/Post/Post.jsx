@@ -89,9 +89,8 @@ import share from '../../images/share.png';
                 {
                         this.state.commentList.map((item, index) => {
 
-                            <div className='post_comment'>{item.username} : {item.commentContent} </div>
+                            return(<div className='post_comment'>{item.username} : {item.commentContent} </div>)
                             
-
                         })
                 }
 

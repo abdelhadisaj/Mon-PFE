@@ -28,7 +28,34 @@ class StoryBar extends Component {
             "username":"username2",
             "storyimg":"../../images/profile.png"
         },
-
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
+        {
+            "username":"username1",
+            "storyimg":"../../images/profile.png"
+        },
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
+        {
+          "username":"username1",
+          "storyimg":"../../images/profile.png"
+        },
         {
             "username":"username3",
             "storyimg":"../../images/profile.png"
@@ -49,10 +76,10 @@ class StoryBar extends Component {
             {
                 this.state.storyList.map((item,index)=>{
 
-                        <div className='story'>
-                            <Avatar className='story_photo' src={profile}/>
-                            <div className='story_username'>{item.username}</div>
-                        </div>
+                      return (<div className='story'>
+                      <Avatar className='story_photo' src={profile}/>
+                      <div className='story_username'>{item.username}</div>
+                  </div>)  
 
                 })
             }

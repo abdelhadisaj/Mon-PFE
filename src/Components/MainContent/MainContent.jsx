@@ -11,11 +11,10 @@ export class MainContent extends Component {
          <Grid container>
 
            <Grid item xs={2}></Grid>
-           <Grid item xs={6}>
+           <Grid item xs={8}>
              <StoryBar/>
              <Publication/>
            </Grid>
-           <Grid item xs={2}></Grid>
            <Grid item xs={2}></Grid>
            
           </Grid>

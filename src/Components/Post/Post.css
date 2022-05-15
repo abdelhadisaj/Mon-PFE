@@ -1,5 +1,5 @@
 .post_container{
-    width: 615px;
+    width: 100%;
     border: 1px solid #dbdbdb;
     background-color: white;
     margin-top: 25px;
@@ -39,7 +39,7 @@
 
 .post_commentbox{
     height: 56px;
-    width: 602px;
+    width: 100%;
     border: 1px solid #dbdbdb;
     margin-top: 10px;
     font-size: 16px;
