@@ -59,7 +59,7 @@ import share from '../../images/share.png';
 
           {/* header post */}
           <div className='post_header'>
-              <Avatar className='post_header_photo' src={this.state.profileImage}/>
+              <Avatar className='post_header_photo' src={this.props.profileImage}/>
               <div className='post_header_username'>{this.props.userName}</div>
 
           </div>
@@ -87,9 +87,10 @@ import share from '../../images/share.png';
           {/* comment section */}
           <div style={{"marginTop":"5px"}}>
                 {
-                        this.state.commentList.map((item,index) => {
+                        this.state.commentList.map((item, index) => {
 
                             <div className='post_comment'>{item.username} : {item.commentContent} </div>
+                            
 
                         })
                 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './StoryBar.css'
 import Avatar from '@mui/material/Avatar';
 import profile from '../../images/profile.png';
+import plus from '../../images/plus.png'
 
 class StoryBar extends Component {
 
@@ -42,7 +43,9 @@ class StoryBar extends Component {
   render() {
     return (
       <div>
+
         <div className='storybar_container'>
+          <img src={plus} className="add_story"/>
             {
                 this.state.storyList.map((item,index)=>{
 
