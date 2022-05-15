@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./Signup.css";
 
-class SignIn extends Component {
-  render() {
+function SignIn() {
+  
     return (
       <div>
         <input className='loginpage_text' type="text" placeholder='Mobile Number Or Email'/>
@@ -12,7 +12,6 @@ class SignIn extends Component {
         <button className='loginpage_button'>Login</button>
       </div>
     )
-  }
 }
 
 export default SignIn;

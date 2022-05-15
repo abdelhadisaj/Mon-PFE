@@ -1,93 +1,72 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './StoryBar.css'
 import Avatar from '@mui/material/Avatar';
 import profile from '../../images/profile.png';
 import plus from '../../images/plus.png'
 
-class StoryBar extends Component {
+const data =[
+  {
+      "username":"username1",
+      "storyimg":"../../images/profile.png"
+  },
 
-    
-    constructor(props){
-        super(props);
-        this.state={
-          storyList : []
-          }
+  {
+      "username":"username2",
+      "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "storyimg":"../../images/profile.png"
+  },
+  {
+      "username":"username3",
+      "storyimg":"../../images/profile.png"
   }
-    componentDidMount(){
-        this.getStoryData();
-    }
 
-  getStoryData = () => {
-    let data =[
-        {
-            "username":"username1",
-            "storyimg":"../../images/profile.png"
-        },
+];
 
+function StoryBar() {
+  const [storyList, setStoryList] = useState(data);
+
+  return (
+    <div className='storybar_container'>
+      <img src={plus} className="add_story"/>
         {
-            "username":"username2",
-            "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-            "username":"username1",
-            "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-          "username":"username1",
-          "storyimg":"../../images/profile.png"
-        },
-        {
-            "username":"username3",
-            "storyimg":"../../images/profile.png"
+          storyList.map((item,index)=>{
+            return (
+              <div className='story'>
+                <Avatar className='story_photo' src={profile}/>
+                <div className='story_username'>{item.username}</div>
+              </div>
+            )  
+          })
         }
-
-    ];
-
-    this.setState({storyList: data});
-
-  };
-         
-  render() {
-    return (
-      <div>
-
-        <div className='storybar_container'>
-          <img src={plus} className="add_story"/>
-            {
-                this.state.storyList.map((item,index)=>{
-
-                      return (<div className='story'>
-                      <Avatar className='story_photo' src={profile}/>
-                      <div className='story_username'>{item.username}</div>
-                  </div>)  
-
-                })
-            }
-
-        </div>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default StoryBar;

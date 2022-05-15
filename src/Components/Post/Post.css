@@ -45,3 +45,9 @@
     font-size: 16px;
     padding-left: 10px;
 }
+
+.post_image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
