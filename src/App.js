@@ -5,7 +5,7 @@ import LoginPage from './Components/Login-page/LoginPage';
 import { useState } from 'react';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <div className="App">
