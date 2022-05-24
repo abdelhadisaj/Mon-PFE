@@ -27,6 +27,9 @@ function Match() {
                 <Typography gutterBottom variant="h5" component="div">
                 Username
                 </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                Proximity in KM
+                </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: "space-between", pl: 1, pb: 1 }}>
                 <IconButton aria-label="notmatch" color="success">
                     <CancelOutlinedIcon sx={{ height: 50, width: 50 }}/>
