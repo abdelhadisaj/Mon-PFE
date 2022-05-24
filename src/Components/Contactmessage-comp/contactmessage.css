@@ -1,0 +1,8 @@
+.contact_container{
+    overflow-x: scroll;
+
+}
+
+.contact_container::-webkit-scrollbar{
+    display: none;
+}

@@ -26,7 +26,7 @@ function NavBar(){
       <div className='Nabvar'>
         <Grid container>
           <Grid item xs={2}></Grid>
-          <Grid item xs={3}>
+          <Grid item xs={3} mt={2} pb={1}>
             <img className='navbar_logo' src={logo} width="130px"/>
           </Grid>
           <Grid item xs={3}>

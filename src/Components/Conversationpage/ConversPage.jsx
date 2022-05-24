@@ -1,8 +1,10 @@
 import React from 'react'
 import Match from '../match-componant/Match'
-import ContactList from '../Contactlistmatch-comp/ContactList';
+import ContactList from '../Contactlist-comp/ContactList';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import IconButton from '@mui/material/IconButton';
+import CancelIcon from '@mui/icons-material/Cancel';
 import NavBar from '../Navbar/NavBar';
 
 function matchPage() {
