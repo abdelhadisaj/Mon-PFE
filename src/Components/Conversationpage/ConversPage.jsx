@@ -1,13 +1,11 @@
 import React from 'react'
-import Match from '../match-componant/Match'
-import ContactList from '../Contactlist-comp/ContactList';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import CancelIcon from '@mui/icons-material/Cancel';
 import NavBar from '../Navbar/NavBar';
+import ContactMessage from '../Contactmessage-comp/ContactMessage';
+import MsgContainer from '../messagescontainer-comp/MsgContainer';
 
-function matchPage() {
+function ConversationPage() {
 
 
   return (
@@ -17,12 +15,10 @@ function matchPage() {
             <Grid item xs={1}>
             </Grid>
             <Grid item xs={2}>
-                <Paper><ContactList/></Paper>
+                <Paper><ContactMessage/></Paper>
             </Grid>
             <Grid item xs={8} >
-                <Paper sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pt:2, pb:2 }}>
-                    <Match/>
-                </Paper>
+                <MsgContainer/>
             </Grid>
             <Grid item xs={1}>
             </Grid>
@@ -32,4 +28,4 @@ function matchPage() {
   )
 }
 
-export default matchPage;
+export default ConversationPage;

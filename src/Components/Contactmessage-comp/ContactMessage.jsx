@@ -4,8 +4,8 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Typography  from '@mui/material/Typography';
 import profile from '../../images/profile.png';
-import './contactlist.css'
-import Paper from '@mui/material/Paper';
+import './contactmessage.css'
+
 
 
 const data =[
@@ -77,7 +77,7 @@ const data =[
 
 
 
-function ContactList() {
+function ContactMessage() {
 
     const [contactList, setcontactList] = useState(data);
 
@@ -114,4 +114,4 @@ function ContactList() {
   )
 }
 
-export default ContactList;
+export default ContactMessage;
