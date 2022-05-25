@@ -14,15 +14,17 @@ function MsgContainer() {
             display: 'flex', 
         }}
         className="msg_container"
-        >
+        > 
+
             <FormControl fullWidth sx={{ m: 1 , display:'flex', justifyContent: 'end' }} variant="filled">
                     <FilledInput
                         placeholder = 'Message'
-                    />
+                        />
+
              </FormControl>
-             <Button variant="contained" endIcon={<SendIcon />} style={{display:'flex', justifyContent: 'end' }}>
-                        Send
-             </Button>
+              <Button variant="contained" endIcon={<SendIcon />} sx={{ mt: 78, mb: 1, mr: 1   }}>
+                          Send
+              </Button>
 
         </Box>
     </Paper>
