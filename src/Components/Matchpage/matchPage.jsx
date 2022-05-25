@@ -5,12 +5,11 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import NavBar from '../Navbar/NavBar';
 
-function matchPage() {
+function MatchPage() {
 
 
   return (
     <>
-      <NavBar/>
       <Grid container mt={1}>
             <Grid item xs={1}>
             </Grid>
@@ -30,4 +29,4 @@ function matchPage() {
   )
 }
 
-export default matchPage;
+export default MatchPage;

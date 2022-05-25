@@ -4,10 +4,9 @@ import NavBar from '../Navbar/NavBar'
 
 function HomePage () {
   return (
-    <div>
-        <NavBar/>
+    <>
         <MainContent/>
-    </div>
+    </>
   )
 }
 
