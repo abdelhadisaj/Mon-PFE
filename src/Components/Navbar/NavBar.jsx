@@ -13,9 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-import HomePage from '../Homepage/HomePage';
-import ConversationPage from '../Conversationpage/ConversPage';
-import MatchPage from '../Matchpage/MatchPage';
 import { Badge } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
