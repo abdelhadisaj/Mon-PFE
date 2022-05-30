@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import Post from '../Post/Post'
 import './Publication.css'
 import upload from '../../images/upload.png';
+import UploadRoundedIcon from '@mui/icons-material/UploadRounded';
+import { Box, IconButton } from '@mui/material';
+import styled from '@emotion/styled';
 
 const data = [{
   "postId":"1",
@@ -26,14 +29,26 @@ const data = [{
 }
 ];
 
+const Input = styled('input')({
+  display: 'none',
+});
+
 function Publication(){
   const [posts, setPosts] = useState(data);
 
   return (
     <div>
-      <div style={{"textAlign":"center"}}>
+      {/* <div style={{"textAlign":"center"}}>
         <img className='upload_icon' src={upload}/>
-      </div>
+      </div> */}
+      <Box sx={{display: 'grid', justifyItems: 'center', mt:3}}>
+          <label htmlFor="icon-button-file">
+                <Input accept="image/*" id="icon-button-file" type="file" />
+                <IconButton color="primary" aria-label="upload picture" component="span" >
+                  <UploadRoundedIcon sx={{fontSize: 75}}/>
+                </IconButton>
+          </label>
+      </Box>
       {
         posts.map((item, index) => {
           return (            

@@ -9,13 +9,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import Typography from '@mui/material/Typography';
 import portrait from '../../images/portrait.jpg';
+import { height } from '@mui/system';
 
 
 function Match() {
 
   return (
  
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345, maxHeigh:'100%' }}>
             <CardActionArea>
             <CardMedia
                 component="img"

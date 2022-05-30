@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import './StoryBar.css'
 import Avatar from '@mui/material/Avatar';
 import profile from '../../images/profile.png';
-import plus from '../../images/plus.png'
+import { IconButton } from '@mui/material';
+import { AddCircleOutlineOutlined } from '@mui/icons-material';
+import styled from '@emotion/styled';
+
 
 const data =[
   {
@@ -49,12 +52,21 @@ const data =[
 
 ];
 
+const Input = styled('input')({
+  display: 'none',
+});
+
 function StoryBar() {
   const [storyList, setStoryList] = useState(data);
 
   return (
     <div className='storybar_container'>
-      <img src={plus} className="add_story"/>
+        <label htmlFor="icon-button-file">
+            <Input accept="image/*" id="icon-button-file" type="file" />
+            <IconButton color="primary" aria-label="upload picture" component="span" >
+              <AddCircleOutlineOutlined sx={{fontSize: 75}}/>
+            </IconButton>
+        </label>
         {
           storyList.map((item,index)=>{
             return (

@@ -86,7 +86,7 @@ function ContactMessage() {
     component="div"
     sx={{
         width: 'auto',
-        height: 691,
+        height: 669,
         backgroundColor: 'primary',
         display: 'Grid', 
     }}

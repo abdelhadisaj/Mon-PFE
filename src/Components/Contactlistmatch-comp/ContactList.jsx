@@ -6,6 +6,7 @@ import Typography  from '@mui/material/Typography';
 import profile from '../../images/profile.png';
 import './contactlist.css'
 import Paper from '@mui/material/Paper';
+import { ClickAwayListener } from '@mui/material';
 
 
 const data =[
@@ -81,6 +82,10 @@ function ContactList() {
 
     const [contactList, setcontactList] = useState(data);
 
+    const getContact = () => {
+
+    }
+
   return (
     <Box 
     component="div"
@@ -96,6 +101,7 @@ function ContactList() {
         {
             contactList.map((item)=>{
             return (
+              <ClickAwayListener onClickAway={getContact}>
                 <Stack direction="row" spacing={2} mt={2} ml={2} >
                     <Avatar
                         alt="Contact"
@@ -106,6 +112,7 @@ function ContactList() {
                         {item.username}
                     </Typography>
                 </Stack>
+              </ClickAwayListener>
             )  
             })
         }

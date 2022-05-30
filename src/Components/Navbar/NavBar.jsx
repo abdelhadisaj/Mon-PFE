@@ -37,7 +37,7 @@ function NavBar(){
           </Grid>
           <Grid item xs={4} style = {{ display:"flex",flexDirection:'row', alignItems: 'center'}} sx={{ml:9}}>
                 <BottomNavigation>
-                      <BottomNavigationAction icon={<HomeIcon sx={{ color: grey[900], fontSize: 29 }}/>} />
+                      <BottomNavigationAction icon={<HomeIcon sx={{ color: grey[900], fontSize: 29 }}/> }/>
                       <BottomNavigationAction icon={<Badge color="error" badgeContent={99} ><QuestionAnswerIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} />
                       <BottomNavigationAction icon={<Badge color="error" badgeContent={14} ><FavoriteIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} />
               </BottomNavigation>

@@ -9,7 +9,7 @@ function MsgContainer() {
         component="div"
         sx={{
             width: 'auto',
-            height: 691,
+            height: '100%',
             backgroundColor: 'primary',
             display: 'flex', 
         }}
