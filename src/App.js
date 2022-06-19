@@ -18,10 +18,11 @@ function App() {
     <>
       {/* {loggedIn ? <HomePage/> : <LoginPage/>} */}
       {/* <MatchPage/> */}
-      <NavBar/>
       <BrowserRouter>
+      <NavBar/>
         <Routes>
           <Route path='/home' element={<HomePage/>}/>
+          <Route path='/' element={<HomePage/>}/>
           <Route path='/match' element={<MatchPage/>}/>
           <Route path='/messages' element={<ConversationPage/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
