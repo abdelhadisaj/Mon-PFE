@@ -2,7 +2,7 @@
 import './App.css';
 import HomePage from './Components/Homepage/HomePage';
 import LoginPage from './Components/Login-page/LoginPage';
-import MatchPage from './Components/Matchpage/MatchPage';
+import MatchPage from './Components/Matchpage/matchPage';
 import { useState } from 'react';
 import ConversationPage from './Components/Conversationpage/ConversPage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -21,6 +21,7 @@ function App() {
       <NavBar/>
       <BrowserRouter>
         <Routes>
+          <Route path='/' element={<h1>hi</h1>}/>
           <Route path='/home' element={<HomePage/>}/>
           <Route path='/match' element={<MatchPage/>}/>
           <Route path='/messages' element={<ConversationPage/>}/>
