@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import { Badge } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-function NavBar(){
+function NavBar({setLoggedIn}){
   const [anchorEl, setAnchorEl] = useState(undefined);
   const open = Boolean(anchorEl);
   const history = useNavigate();
@@ -27,7 +27,7 @@ function NavBar(){
     setAnchorEl(null);
   };
   const homePage = () =>{
-    history('/home')
+    history('/')
   }
   const conversationPage = () =>{
     history('/messages')
@@ -38,6 +38,12 @@ function NavBar(){
   const profilePage = () =>{
     history('/profile')
     setAnchorEl(null);
+  }
+  const loginPage = () =>{
+    sessionStorage.clear();
+    setLoggedIn(true);
+    setAnchorEl(null);
+    history('/login')
   }
   
   return (
@@ -75,8 +81,7 @@ function NavBar(){
               }}
             >
               <MenuItem onClick={profilePage}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={loginPage}>Logout</MenuItem>
             </Menu>
           </Grid>
           <Grid item xs={1}></Grid>

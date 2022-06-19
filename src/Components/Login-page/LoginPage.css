@@ -11,7 +11,7 @@ background-color: #fafafa;
 
 .loginpage_logo{
     width: 175px;
-    
+    padding-top: 5%;
 }
 
 .loginpage_formcomponant{
@@ -20,8 +20,6 @@ background-color: #fafafa;
     text-align: center;
     background-color: white;
     border-radius: 5px;
-    
-
 }
 
 .loginpage_signin{
@@ -64,15 +62,12 @@ background-color: #fafafa;
 .loginpage_signupbar{
     height: 43px;
     width: 380px;
-    border: 2px solid #dbdbdb;
     text-align: center;
     background-color: white;
-    border-radius: 5px;
     margin-top: 100px;
 
 }
 
 .element1et2{
-    padding: 10px;
-    
+    padding: 0px; 
 }
