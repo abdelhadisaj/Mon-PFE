@@ -1,8 +1,9 @@
-import { Avatar, Stack, Paper, IconButton } from '@mui/material';
+import { Avatar, Stack, Paper, IconButton, TextField, Input, InputLabel, FormControl, InputAdornment } from '@mui/material';
 import React, { useState } from 'react'
 import './Post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import SendIcon from '@mui/icons-material/Send';
 
 const data = [
     {
@@ -33,26 +34,33 @@ const data = [
 
 function Post(props) {
     const [comments, setComments] = useState(data);
+    const [comment, setComment] = useState('');
     const [isLike, setIsLike] = useState(false);
 
     const handleLike = () => {
         setIsLike(!isLike);
     }
 
+    const handleComment = () => {
+        console.log(comment)
+        setComment('')
+    }
+
     return(
-        <Stack sx={{mt: 4}} >
-            <Paper  >
+        <Stack sx={{mt: 4, mb: 4}} >
+            <Paper>
                 <Stack 
                     direction="row"
                     justifyContent="flex-start"
                     alignItems="center"
                     spacing={2}
+                    sx={{p: 2, pl: 3}}
                 >
-                    <Avatar className='post_header_photo' src={props.profileImage}/>
-                    <div className='post_header_username'>{props.userName}</div>
+                    <Avatar src={props.profileImage}/>
+                    <span><strong>{props.userName}</strong></span>
                 </Stack>
             </Paper>
-            <Paper  >
+            <Paper>
                 <Stack 
                     direction="row"
                     justifyContent="center"
@@ -61,7 +69,6 @@ function Post(props) {
                 >
                     <img src={props.postImage} />
                 </Stack>
-               
             </Paper>
             <Paper sx={{p: 1}} >
                 <Stack 
@@ -87,10 +94,36 @@ function Post(props) {
                 >
                     {
                         comments.map((item, index) => {
-                            return(<div style={{"marginLeft":"20px"}}><strong><u>{item.username} :</u></strong> {item.commentContent} </div>)
+                            return(
+                                <span style={{marginLeft: '20px'}}>
+                                    <strong>{item.username} </strong> {item.commentContent} 
+                                </span>
+                            )
                         })
                     }
-                    <input className='post_commentbox' type="text" placeholder='Comment...'/>
+                    <Stack 
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                    >
+                        <TextField 
+                            id="outlined-comment" 
+                            label="Comment" 
+                            variant="outlined"
+                            value={comment}
+                            onChange={(val)=>setComment(val.target.value)} 
+                            multiline 
+                            fullWidth
+                        />
+                        <IconButton
+                            aria-label="send comment"
+                            onClick={handleComment}
+                            edge="end"
+                        >
+                            <SendIcon fontSize='large'/>
+                        </IconButton>
+                    </Stack>
                 </Stack>
             </Paper>
         </Stack>
