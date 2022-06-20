@@ -58,7 +58,7 @@ function Publication(){
   const handleClose = () => setOpen(false);
   const handleUpload = (file) => {
     let files = file.target.files;
-    if (files.length == 0) {
+    if (files.length === 0) {
       setImg(null);
     } else {
       setImg(files[0]);
@@ -71,7 +71,7 @@ function Publication(){
     let formData = new FormData();
     if (img) formData.append('post', img, img.name);
     formData.append('data', JSON.stringify(data));
-    
+
     setOpen(false);
     setImg(null);
     setDesc('');
