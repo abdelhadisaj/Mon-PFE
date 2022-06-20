@@ -1,9 +1,8 @@
-import { Avatar } from '@mui/material';
+import { Avatar, Stack, Paper, IconButton } from '@mui/material';
 import React, { useState } from 'react'
 import './Post.css'
-import match from '../../images/match.png';
-import comment from '../../images/comment.png';
-import share from '../../images/share.png';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const data = [
     {
@@ -34,41 +33,67 @@ const data = [
 
 function Post(props) {
     const [comments, setComments] = useState(data);
+    const [isLike, setIsLike] = useState(false);
+
+    const handleLike = () => {
+        setIsLike(!isLike);
+    }
 
     return(
-        <div className='post_container'>
-          {/* header post */}
-          <div className='post_header'>
-              <Avatar className='post_header_photo' src={props.profileImage}/>
-              <div className='post_header_username'>{props.userName}</div>
-
-          </div>
-          {/* image post */}
-          <div className='post_image'>
-              <img src={props.postImage} />
-
-          </div>
-          {/* analytics section */}
-          <div className='post_analytics'>
-              <div style={{"marginLeft":"10px"}}>
-                  <img className='post_likeandcomment' src={match}/>
-                  <img className='post_likeandcomment' src={comment}/>
-                  <img className='post_likeandcomment' src={share}/>
-              </div>
-              <div style={{"fontWeight":"bold","marginLeft":"20px"}}>
-                  {props.likes}
-              </div>
-          </div>
-          {/* comment section */}
-          <div style={{"marginTop":"5px"}}>
-                {
-                    comments.map((item, index) => {
-                        return(<div className='post_comment'>{item.username} : {item.commentContent} </div>)
-                   })
-                }
-              <input className='post_commentbox' type="text" placeholder='Add acomment...'/>
-          </div>
-      </div>
+        <Stack sx={{mt: 4}} >
+            <Paper  >
+                <Stack 
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <Avatar className='post_header_photo' src={props.profileImage}/>
+                    <div className='post_header_username'>{props.userName}</div>
+                </Stack>
+            </Paper>
+            <Paper  >
+                <Stack 
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <img src={props.postImage} />
+                </Stack>
+               
+            </Paper>
+            <Paper sx={{p: 1}} >
+                <Stack 
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <IconButton onClick={handleLike}>
+                        {isLike ? <FavoriteIcon fontSize='large'/> : <FavoriteBorderIcon fontSize='large'/>}
+                    </IconButton>
+                    <div style={{"fontWeight":"bold","marginLeft":"5px"}}>
+                        {props.likes} Likes.
+                    </div>
+                </Stack>
+            </Paper>
+            <Paper sx={{p: 2}} >
+                <Stack 
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="space-around"
+                    spacing={2}
+                >
+                    {
+                        comments.map((item, index) => {
+                            return(<div style={{"marginLeft":"20px"}}><strong><u>{item.username} :</u></strong> {item.commentContent} </div>)
+                        })
+                    }
+                    <input className='post_commentbox' type="text" placeholder='Comment...'/>
+                </Stack>
+            </Paper>
+        </Stack>
     );
 }
 

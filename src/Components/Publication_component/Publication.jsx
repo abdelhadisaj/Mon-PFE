@@ -71,8 +71,7 @@ function Publication(){
     let formData = new FormData();
     if (img) formData.append('post', img, img.name);
     formData.append('data', JSON.stringify(data));
-    console.log(formData.get('post'))
-    console.log(formData.get('data'))
+    
     setOpen(false);
     setImg(null);
     setDesc('');
