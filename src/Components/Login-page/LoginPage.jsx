@@ -11,15 +11,16 @@ function LoginPage () {
 
   return (
     <div>
-      <Grid container>
-          <Grid item xs={2}>
-            
-          </Grid>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
           <Grid item xs={8}>
-          <div className='loginpage_main'>
-            <div>
               <img src= {mainimage} width ="554px" />
-            </div>
+          </Grid>
+          <Grid item xs={4}>
             <div className='loginpage_formcomponant'>
               <div><img className='loginpage_logo' src= {logo}/></div>
                   <div className='loginpage_signin'>
@@ -35,9 +36,6 @@ function LoginPage () {
                     }
                   </div> 
             </div>
-           </div>
-          </Grid>
-          <Grid item xs={2}>
           </Grid>
       </Grid>
     </div>
