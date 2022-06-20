@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import Grid from '@mui/material/Grid';
+import {Grid,Button} from '@mui/material';
 import mainimage from '../../images/12362547.png';
 import logo from '../../images/logo.png';
 import './LoginPage.css';
 import SignIn from '../Signin-comp/SignIn';
 import SignUp from '../Signup-comp/SignUp';
 
-function LoginPage () {
-  const [isLogin, setIsLogin] = useState(false);
+function LoginPage ({ setLoggedIn }) {
+  const [isLogin, setIsLogin] = useState(true);
+  
 
   return (
     <div>
@@ -25,14 +26,21 @@ function LoginPage () {
               <div><img className='loginpage_logo' src= {logo}/></div>
                   <div className='loginpage_signin'>
                     {
-                      isLogin ? <SignIn/> : <SignUp/>
+                      isLogin ? <SignIn setLoggedIn={setLoggedIn}/> : <SignUp/>
                     }
                     <div className='forget_pass'>Forgot password ?</div>
                   </div>
                   <div className='loginpage_signupbar'>
                     {
-                    isLogin ? <div className='element1et2'>Don't have an account ?? <span onClick={setIsLogin(false)} style={{"font-weight":"bold","color":"#0395f6"}}>Sign in</span></div> 
-                    : <div className='element1et2'>Have an account ?? <span onClick={setIsLogin(true)} style={{"font-weight":"bold","color":"#0395f6"}}>Log in</span></div>
+                    isLogin ? 
+                    <div className='element1et2'>
+                      Don't have an account ?? 
+                      <Button variant="text" onClick={()=>setIsLogin(false)}>Sign Up</Button>
+                    </div> 
+                    : <div className='element1et2'>
+                      Have an account ?? 
+                      <Button variant="text" onClick={()=>setIsLogin(true)}>Login</Button>
+                      </div>
                     }
                   </div> 
             </div>

@@ -3,7 +3,7 @@ import Post from '../Post/Post'
 import './Publication.css'
 import upload from '../../images/upload.png';
 import UploadRoundedIcon from '@mui/icons-material/UploadRounded';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Modal, Typography, FormControl, Button, TextField } from '@mui/material';
 import styled from '@emotion/styled';
 
 const data = [{
@@ -32,23 +32,52 @@ const data = [{
 const Input = styled('input')({
   display: 'none',
 });
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 function Publication(){
   const [posts, setPosts] = useState(data);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div>
-      {/* <div style={{"textAlign":"center"}}>
-        <img className='upload_icon' src={upload}/>
-      </div> */}
       <Box sx={{display: 'grid', justifyItems: 'center', mt:3}}>
-          <label htmlFor="icon-button-file">
-                <Input accept="image/*" id="icon-button-file" type="file" />
-                <IconButton color="primary" aria-label="upload picture" component="span" >
+                <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleOpen}>
                   <UploadRoundedIcon sx={{fontSize: 75}}/>
                 </IconButton>
-          </label>
       </Box>
+      <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      >
+      <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            share your Publication
+          </Typography>
+          <FormControl>
+            <TextField id="outlined-basic" label="Description" variant="outlined" />
+            <label htmlFor="contained-button-file">
+               <Input accept="image/*" id="contained-button-file" multiple type="file" />
+               <Button variant="contained" component="span">
+                 Upload
+               </Button>
+             </label>
+          </FormControl>
+      </Box>
+    </Modal>
       {
         posts.map((item, index) => {
           return (            

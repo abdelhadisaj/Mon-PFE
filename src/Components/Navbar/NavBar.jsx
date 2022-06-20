@@ -12,19 +12,39 @@ import profile from '../../images/profile.png';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Badge } from '@mui/material';
 import { grey } from '@mui/material/colors';
 
-function NavBar(){
+function NavBar({setLoggedIn}){
   const [anchorEl, setAnchorEl] = useState(undefined);
   const open = Boolean(anchorEl);
+  const history = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const homePage = () =>{
+    history('/')
+  }
+  const conversationPage = () =>{
+    history('/messages')
+  }
+  const matchPage = () =>{
+    history('/match')
+  }
+  const profilePage = () =>{
+    history('/profile')
+    setAnchorEl(null);
+  }
+  const loginPage = () =>{
+    sessionStorage.clear();
+    setLoggedIn(true);
+    setAnchorEl(null);
+    history('/login')
+  }
   
   return (
       <div className='Nabvar'>
@@ -37,9 +57,9 @@ function NavBar(){
           </Grid>
           <Grid item xs={4} style = {{ display:"flex",flexDirection:'row', alignItems: 'center'}} sx={{ml:9}}>
                 <BottomNavigation>
-                      <BottomNavigationAction icon={<HomeIcon sx={{ color: grey[900], fontSize: 29 }}/> }/>
-                      <BottomNavigationAction icon={<Badge color="error" badgeContent={99} ><QuestionAnswerIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} />
-                      <BottomNavigationAction icon={<Badge color="error" badgeContent={14} ><FavoriteIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} />
+                      <BottomNavigationAction icon={<HomeIcon sx={{ color: grey[900], fontSize: 29 }}/> } onClick={homePage} />
+                      <BottomNavigationAction icon={<Badge color="error" badgeContent={99} ><QuestionAnswerIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} onClick={conversationPage}/>
+                      <BottomNavigationAction icon={<Badge color="error" badgeContent={14} ><FavoriteIcon sx={{ color: grey[900], fontSize: 29 }} /> </Badge>} onClick={matchPage}/>
               </BottomNavigation>
             <IconButton 
               onClick={handleClick}
@@ -60,9 +80,8 @@ function NavBar(){
                 'aria-labelledby': 'basic-button',
               }}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+              <MenuItem onClick={profilePage}>Profile</MenuItem>
+              <MenuItem onClick={loginPage}>Logout</MenuItem>
             </Menu>
           </Grid>
           <Grid item xs={1}></Grid>
