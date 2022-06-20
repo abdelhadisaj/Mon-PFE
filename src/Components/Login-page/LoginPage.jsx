@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import {Grid,Button} from '@mui/material';
-import mainimage from '../../images/12362547.png';
+import {Grid, Typography} from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import logo from '../../images/logo.png';
 import './LoginPage.css';
 import SignIn from '../Signin-comp/SignIn';
 import SignUp from '../Signup-comp/SignUp';
 
 function LoginPage ({ setLoggedIn }) {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isAccount, setAccount] = useState(true);
   
 
   return (
@@ -15,35 +16,25 @@ function LoginPage ({ setLoggedIn }) {
       <Grid
         container
         direction="row"
-        justifyContent="center"
+        justifyContent="space-evenly"
         alignItems="center"
       >
-          <Grid item xs={8}>
-              <img src= {mainimage} width ="554px" />
+          <Grid item xs={6} sx={{mt: 12}}>
+            <img src={logo} />
+            <Typography variant="h5" gutterBottom component="div" align="center">
+              Avec JustShare, partagez et restez en contact avec votre entourage
+            </Typography>
           </Grid>
           <Grid item xs={4}>
-            <div className='loginpage_formcomponant'>
-              <div><img className='loginpage_logo' src= {logo}/></div>
-                  <div className='loginpage_signin'>
-                    {
-                      isLogin ? <SignIn setLoggedIn={setLoggedIn}/> : <SignUp/>
-                    }
-                    <div className='forget_pass'>Forgot password ?</div>
-                  </div>
-                  <div className='loginpage_signupbar'>
-                    {
-                    isLogin ? 
-                    <div className='element1et2'>
-                      Don't have an account ?? 
-                      <Button variant="text" onClick={()=>setIsLogin(false)}>Sign Up</Button>
-                    </div> 
-                    : <div className='element1et2'>
-                      Have an account ?? 
-                      <Button variant="text" onClick={()=>setIsLogin(true)}>Login</Button>
-                      </div>
-                    }
-                  </div> 
-            </div>
+            <Card sx={isAccount ? {mt: 18}:{mt: 14}}>
+              <CardContent>
+                  {
+                    isAccount ? 
+                    <SignIn setLoggedIn={setLoggedIn} setAccount={setAccount}/> 
+                    : <SignUp setAccount={setAccount}/>
+                  }
+              </CardContent>
+            </Card>
           </Grid>
       </Grid>
     </div>
