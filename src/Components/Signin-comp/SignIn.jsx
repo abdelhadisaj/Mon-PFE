@@ -90,7 +90,7 @@ function SignIn({ setLoggedIn, setAccount }) {
             Forgot password ?
           </Button>
         </Grid>
-        <Divider />
+        <Divider variant="middle" />
         <Grid item xs={8} >
           Don't have an account ?? 
           <Button variant="text" size="small" onClick={()=>setAccount(false)}>Sign Up</Button>

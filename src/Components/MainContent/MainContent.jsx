@@ -10,7 +10,7 @@ function MainContent(){
     <Grid container>
       <Grid item xs={2}></Grid>
       <Grid item xs={8}>
-        <StoryBar/>
+        {/* <StoryBar/> */}
         <Publication/>
       </Grid>
       <Grid item xs={2}></Grid>
