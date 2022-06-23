@@ -6,13 +6,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import SendIcon from '@mui/icons-material/Send';
 
 const data = [
-    {
-        "username":"user1",
-        "commentId":"12",
-        "commentTime":"12:11",
-        "commentContent":"comment1"
-    },
-    {
+  {
+      "username":"user1",
+      "commentId":"12",
+      "commentTime":"12:11",
+      "commentContent":"comment1"
+  },
+  {
       "username":"user2",
       "commentId":"13",
       "commentTime":"12:11",
@@ -23,6 +23,66 @@ const data = [
       "commentId":"14",
       "commentTime":"12:11",
       "commentContent":"comment3"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user3",
+      "commentId":"14",
+      "commentTime":"12:11",
+      "commentContent":"comment3"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user3",
+      "commentId":"14",
+      "commentTime":"12:11",
+      "commentContent":"comment3"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
+  },
+  {
+      "username":"user4",
+      "commentId":"15",
+      "commentTime":"12:11",
+      "commentContent":"comment4"
   },
   {
       "username":"user4",
@@ -92,15 +152,23 @@ function Post(props) {
                     alignItems="space-around"
                     spacing={2}
                 >
-                    {
-                        comments.map((item, index) => {
+                    <Stack 
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="space-around"
+                        spacing={2}
+                        sx={{ overflowY: 'scroll', height: '20vh'}}
+                    >
+                        {
+                        comments.map((item) => {
                             return(
                                 <span style={{marginLeft: '20px'}}>
                                     <strong>{item.username} </strong> {item.commentContent} 
                                 </span>
                             )
                         })
-                    }
+                        }
+                    </Stack>
                     <Stack 
                         direction="row"
                         justifyContent="center"
