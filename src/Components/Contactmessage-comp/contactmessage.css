@@ -1,6 +1,5 @@
 .contact_container{
-    overflow-x: scroll;
-
+    overflow-y: scroll;
 }
 
 .contact_container::-webkit-scrollbar{

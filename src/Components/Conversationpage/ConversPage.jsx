@@ -6,24 +6,77 @@ import ContactMessage from '../Contactmessage-comp/ContactMessage';
 import MsgContainer from '../messagescontainer-comp/MsgContainer';
 
 function ConversationPage() {
+  let user = {
+    id: 123,
+    username: "Test"
+  }
 
+  let messages = [
+    {
+      senderId: 321,
+      text: "test Message"
+    },
+    {
+      senderId: 123,
+      text: "Received Message"
+    },
+    {
+      senderId: 321,
+      text: "Sent Message"
+    },
+    {
+      senderId: 123,
+      text: "thanks Message"
+    },
+    {
+      senderId: 321,
+      text: "test Message"
+    },
+    {
+      senderId: 123,
+      text: "Received Message"
+    },
+    {
+      senderId: 321,
+      text: "Sent Message"
+    },
+    {
+      senderId: 123,
+      text: "thanks Message"
+    },
+    {
+      senderId: 321,
+      text: "test Message"
+    },
+    {
+      senderId: 123,
+      text: "Received Message"
+    },
+    {
+      senderId: 321,
+      text: "Sent Message"
+    },
+    {
+      senderId: 123,
+      text: "thanks Message"
+    },
+]
 
   return (
-    <>
-      <Grid container mt={1}>
-            <Grid item xs={1}>
-            </Grid>
-            <Grid item xs={2}>
-                <Paper><ContactMessage/></Paper>
-            </Grid>
-            <Grid item xs={8} >
-                <MsgContainer/>
-            </Grid>
-            <Grid item xs={1}>
-            </Grid>
-
-       </Grid>        
-    </>
+    <Grid
+      container
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={3}
+    >
+      <Grid item xs={3}>
+          <ContactMessage/>
+      </Grid>
+      <Grid item xs={7} >
+          <MsgContainer messages={messages} user={user}/>
+      </Grid>
+    </Grid>        
   )
 }
 

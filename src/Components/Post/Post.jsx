@@ -1,4 +1,4 @@
-import { Avatar, Stack, Paper, IconButton, TextField, Input, InputLabel, FormControl, InputAdornment } from '@mui/material';
+import { Avatar, Stack, Paper, IconButton, TextField } from '@mui/material';
 import React, { useState } from 'react'
 import './Post.css'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -102,10 +102,10 @@ function Post(props) {
                         })
                     }
                     <Stack 
-                    direction="row"
-                    justifyContent="center"
-                    alignItems="center"
-                    spacing={2}
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={2}
                     >
                         <TextField 
                             id="outlined-comment" 
