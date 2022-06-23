@@ -1,11 +1,83 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import NavBar from '../Navbar/NavBar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 import ContactMessage from '../Contactmessage-comp/ContactMessage';
 import MsgContainer from '../messagescontainer-comp/MsgContainer';
 
+const data =[
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  },
+
+  {
+      "username":"username2",
+      "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  },
+
+  {
+      "username":"username2",
+      "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  },
+
+  {
+      "username":"username2",
+      "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+    "username":"username1",
+    "profileimg":"../../images/profile.png"
+  },
+  {
+      "username":"username1",
+      "profileimg":"../../images/profile.png"
+  }
+
+];
+
 function ConversationPage() {
+  const [conversations, setConversations]= useState([]);
+  const [conversation, setConversation]= useState(undefined);
+
   let user = {
     id: 123,
     username: "Test"
@@ -71,10 +143,22 @@ function ConversationPage() {
       spacing={3}
     >
       <Grid item xs={3}>
-          <ContactMessage/>
+          <ContactMessage conversations={data} setConversation={setConversation}/>
       </Grid>
       <Grid item xs={7} >
-          <MsgContainer messages={messages} user={user}/>
+        {conversation ? (
+            <MsgContainer messages={messages} user={user}/>
+          ) : (
+            <Container maxWidth="sm">
+              <Box sx={{ bgcolor: 'white', width: 'auto', height: '80vh' }} >
+              <Alert severity="info">
+                <AlertTitle><strong>Info</strong></AlertTitle>
+                Please Select A Conversation To Continue!
+              </Alert>
+              </Box>
+            </Container>
+          )
+        }
       </Grid>
     </Grid>        
   )

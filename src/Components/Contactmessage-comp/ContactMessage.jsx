@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Box from '@mui/material/Box';
 import Typography  from '@mui/material/Typography';
 import { Avatar, Stack, Button, Divider } from '@mui/material';
 import Card from '@mui/material/Card';
@@ -7,75 +6,10 @@ import CardContent from '@mui/material/CardContent';
 import profile from '../../images/profile.png';
 import './contactmessage.css'
 
-const data =[
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
-    },
-  
-    {
-        "username":"username2",
-        "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
-    },
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
-    },
-  
-    {
-        "username":"username2",
-        "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
-    },
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
-    },
-  
-    {
-        "username":"username2",
-        "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-      "username":"username1",
-      "profileimg":"../../images/profile.png"
-    },
-    {
-        "username":"username1",
-        "profileimg":"../../images/profile.png"
+function ContactMessage({conversations, setConversation}) {
+    const handleConversation = (convo) => {
+      setConversation(convo)
     }
-
-];
-
-function ContactMessage() {
-    const [contactList, setcontactList] = useState(data);
 
   return (
     <Card
@@ -106,10 +40,22 @@ function ContactMessage() {
             alignItems="flex-start"
             sx={{ width: '100%', height: '100%'}}
           >
-          {contactList.map((item)=>{
+          {conversations.map((item)=>{
             return (
               <>
-                <Button variant="text" sx={{ height: '100%', pt: 2, pb: 2, pl: 3, textTransform: 'none', fontSize: 16, color: 'black'}}>
+                <Button 
+                  variant="text" 
+                  onClick={()=>handleConversation(item)}
+                  sx={{ 
+                    height: '100%', 
+                    pt: 2, 
+                    pb: 2, 
+                    pl: 3, 
+                    textTransform: 'none', 
+                    fontSize: 16, 
+                    color: 'black'
+                  }}
+                >
                   <Stack 
                     direction="row"
                     justifyContent="flex-start"
