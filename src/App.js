@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/match' element={<MatchPage/>}/>
+          {/* <Route path='/match' element={<MatchPage/>}/> */}
           <Route path='/messages' element={<ConversationPage/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
         </Routes>

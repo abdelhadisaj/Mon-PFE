@@ -4,7 +4,7 @@ import React from 'react';
 
 function Profile() {
   return (
-    <Paper sx={{ p:8, display: 'grid',justifyItems: 'center'}} >
+    <Paper sx={{ m:4, p:4, display: 'grid',justifyItems: 'center'}} >
         <Stack spacing={4}>
             <Avatar
             alt="photo de profile"

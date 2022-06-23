@@ -67,7 +67,7 @@ function Post(props) {
                     alignItems="center"
                     spacing={2}
                 >
-                    <img src={props.postImage} />
+                    <img src={props.postImage} style={{maxWidth: '100%'}}/>
                 </Stack>
             </Paper>
             <Paper sx={{p: 1}} >
