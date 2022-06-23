@@ -5,92 +5,99 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SendIcon from '@mui/icons-material/Send';
 
-const data = [
-  {
-      "username":"user1",
-      "commentId":"12",
-      "commentTime":"12:11",
-      "commentContent":"comment1"
-  },
-  {
-      "username":"user2",
-      "commentId":"13",
-      "commentTime":"12:11",
-      "commentContent":"comment2"
-  },
-  {
-      "username":"user3",
-      "commentId":"14",
-      "commentTime":"12:11",
-      "commentContent":"comment3"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user3",
-      "commentId":"14",
-      "commentTime":"12:11",
-      "commentContent":"comment3"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user3",
-      "commentId":"14",
-      "commentTime":"12:11",
-      "commentContent":"comment3"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  },
-  {
-      "username":"user4",
-      "commentId":"15",
-      "commentTime":"12:11",
-      "commentContent":"comment4"
-  }
-];
+let data = [
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment1"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment2"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment3"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment4"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment5"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment6"
+    },{
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment7"
+    },{
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment8"
+    },{
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment1"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment2"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment3"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment4"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment5"
+    },
+    {
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment6"
+    },{
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment7"
+    },{
+        "username":"user4",
+        "commentId":"15",
+        "commentTime":"12:11",
+        "commentContent":"comment8"
+    },
+]
 
 function Post(props) {
     const [comments, setComments] = useState(data);
@@ -145,53 +152,48 @@ function Post(props) {
                     </div>
                 </Stack>
             </Paper>
-            <Paper sx={{p: 2}} >
+            <Paper sx={{p: 2, height: '100%'}} >
                 <Stack 
                     direction="column"
                     justifyContent="center"
                     alignItems="space-around"
                     spacing={2}
+                    sx={{ overflowY: 'scroll', maxHeight: '20vh'}}
                 >
-                    <Stack 
-                        direction="column"
-                        justifyContent="center"
-                        alignItems="space-around"
-                        spacing={2}
-                        sx={{ overflowY: 'scroll', height: '20vh'}}
+                    {
+                    comments.map((item) => {
+                        return(
+                            <span style={{marginLeft: '20px'}}>
+                                <strong>{item.username} </strong> {item.commentContent} 
+                            </span>
+                        )
+                    })
+                    }
+                </Stack>
+            </Paper>
+            <Paper>
+                <Stack 
+                    direction="row"
+                    justifyContent="center"
+                    alignItems="center"
+                    spacing={2}
+                >
+                    <TextField 
+                        id="outlined-comment" 
+                        label="Comment" 
+                        variant="outlined"
+                        value={comment}
+                        onChange={(val)=>setComment(val.target.value)} 
+                        multiline 
+                        fullWidth
+                    />
+                    <IconButton
+                        aria-label="send comment"
+                        onClick={handleComment}
+                        edge="end"
                     >
-                        {
-                        comments.map((item) => {
-                            return(
-                                <span style={{marginLeft: '20px'}}>
-                                    <strong>{item.username} </strong> {item.commentContent} 
-                                </span>
-                            )
-                        })
-                        }
-                    </Stack>
-                    <Stack 
-                        direction="row"
-                        justifyContent="center"
-                        alignItems="center"
-                        spacing={2}
-                    >
-                        <TextField 
-                            id="outlined-comment" 
-                            label="Comment" 
-                            variant="outlined"
-                            value={comment}
-                            onChange={(val)=>setComment(val.target.value)} 
-                            multiline 
-                            fullWidth
-                        />
-                        <IconButton
-                            aria-label="send comment"
-                            onClick={handleComment}
-                            edge="end"
-                        >
-                            <SendIcon fontSize='large'/>
-                        </IconButton>
-                    </Stack>
+                        <SendIcon fontSize='large'/>
+                    </IconButton>
                 </Stack>
             </Paper>
         </Stack>

@@ -75,7 +75,7 @@ const data =[
 ];
 
 function ConversationPage() {
-  const [conversations, setConversations]= useState([]);
+  // const [conversations, setConversations]= useState([]);
   const [conversation, setConversation]= useState(undefined);
 
   let user = {
