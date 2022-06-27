@@ -1,26 +1,47 @@
 import React, {useState} from 'react'
-import "../Login-page/LoginPage.css";
-import { login } from '../../services/auth'; 
+import { login } from '../../../services/auth'; 
+import { getCurrentUser } from '../../../services/user'; 
 import { useNavigate } from 'react-router-dom';
 import { Grid, Button, IconButton, Input, InputLabel, FormControl, Divider } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
+import { useMutation, useQueryClient, useQuery } from 'react-query'
+import { useEffect } from 'react';
 
-
-function SignIn({ setLoggedIn, setAccount }) {
+function SignIn({ setAccount }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
   const history = useNavigate();
-  const handleLogin = async () =>{
-    try{
-      let data = await login(email, password);
+  const queryClient = useQueryClient();
+  const mutation = useMutation((values) => login(values.email, values.password), {
+    onSuccess: (data) => {
       sessionStorage.setItem('token',data.data.token);
-      setLoggedIn(false);
-      history('/')
-    } catch(e) {
+      sessionStorage.setItem('currentUser',data.data.user._id);
+      queryClient.refetchQueries('currentUser');
+    },
+    onError: (err) => {
+      console.log(err)
+    },
+  });
 
+  const { isSuccess } = useQuery('currentUser', getCurrentUser, {
+    enabled: false,
+    retry: false,
+    cacheTime: Infinity,
+  });
+
+  useEffect(()=>{
+    if(isSuccess)history('/');
+  },[isSuccess])
+
+  const handleLogin = async () =>{
+      try{
+        console.log(email, password)
+      await mutation.mutate({email, password});
+    } catch(e) {
+      console.log(e)
     }
   }
 

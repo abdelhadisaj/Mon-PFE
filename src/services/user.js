@@ -35,6 +35,17 @@ export const getUser = (userId) =>
     ],
   });
 
+export const getCurrentUser = () =>
+  instance({
+    method: 'GET',
+    url: '/users/'+ sessionStorage.getItem('currentUser'),
+    transformResponse: [
+      function (data) {
+        return JSON.parse(data);
+      },
+    ],
+  });
+
 export const getFollowings = () =>
   instance({
     method: 'GET',

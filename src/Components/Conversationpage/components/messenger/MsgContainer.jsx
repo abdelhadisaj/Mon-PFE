@@ -2,7 +2,7 @@ import { Paper, IconButton, TextField, Avatar, Stack, Divider } from '@mui/mater
 import Typography  from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import profile from '../../images/profile.png';
+import profile from '../../../../images/profile.png';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
 import React, { useState } from 'react';

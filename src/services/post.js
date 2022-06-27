@@ -85,6 +85,17 @@ export const getPersonalProfileTimeline = (username, postsNo=100, pageNo=0) =>
     ],
   });
 
+export const getAllPosts = (postsNo=100, pageNo=0) =>
+  instance({
+    method: 'GET',
+    url: '/posts/?postsNo='+postsNo+'&pageNo='+pageNo,
+    transformResponse: [
+      function (data) {
+        return JSON.parse(data);
+      },
+    ],
+  });
+
 export const getPost = (postId) =>
   instance({
     method: 'GET',

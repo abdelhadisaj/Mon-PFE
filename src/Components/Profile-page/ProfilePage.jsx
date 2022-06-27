@@ -1,6 +1,6 @@
 import React from 'react'
-import Profile from '../Profile-comp/profile'
-import ProfilePub from '../Profile-comp/ProfilePub'
+import Profile from './components/profile'
+import ProfilePub from './components/ProfilePub'
 
 function ProfilePage() {
   return (

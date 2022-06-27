@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import "./Signup.css";
-import { register } from '../../services/auth';
+import { register } from '../../../services/auth';
 import { Grid, Button, IconButton, Input, InputLabel, FormControl } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';

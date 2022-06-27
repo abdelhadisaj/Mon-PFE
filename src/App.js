@@ -1,24 +1,28 @@
-
+import { useQuery } from 'react-query'
 import './App.css';
 import HomePage from './Components/Homepage/HomePage';
-import LoginPage from './Components/Login-page/LoginPage';
+import LoginPage from './Components/login';
 // import MatchPage from './Components/Matchpage/matchPage';
-import { useState } from 'react';
 import ConversationPage from './Components/Conversationpage/ConversPage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import NavBar from './Components/Navbar/NavBar';
 import ProfilePage from './Components/Profile-page/ProfilePage';
-
+import { getCurrentUser } from './services/user'; 
 
 
 function App() {
-   const [loggedIn, setLoggedIn] = useState(false);
+  const { isSuccess } = useQuery('currentUser', getCurrentUser, {
+    enabled: false,
+    retry: false,
+    cacheTime: Infinity,
+  });
+
   return (
     <>
       <BrowserRouter>
-      {!loggedIn ? <NavBar setLoggedIn={setLoggedIn}/>:null}
+      {isSuccess ? <NavBar />:null}
         <Routes>
-          <Route path='/login' element={<LoginPage setLoggedIn={setLoggedIn}/>}/>
+          <Route path='/login' element={<LoginPage/>}/>
           <Route path='/' element={<HomePage/>}/>
           {/* <Route path='/match' element={<MatchPage/>}/> */}
           <Route path='/messages' element={<ConversationPage/>}/>

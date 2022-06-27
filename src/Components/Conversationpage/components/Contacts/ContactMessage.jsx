@@ -3,7 +3,7 @@ import Typography  from '@mui/material/Typography';
 import { Avatar, Stack, Button, Divider } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import profile from '../../images/profile.png';
+import profile from '../../../../images/profile.png';
 import './contactmessage.css'
 
 function ContactMessage({conversations, setConversation}) {

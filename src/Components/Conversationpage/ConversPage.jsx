@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import ContactMessage from '../Contactmessage-comp/ContactMessage';
-import MsgContainer from '../messagescontainer-comp/MsgContainer';
+import ContactMessage from './components/Contacts/ContactMessage';
+import MsgContainer from './components/messenger/MsgContainer';
 
 const data =[
   {

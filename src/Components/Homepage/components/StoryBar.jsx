@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import './StoryBar.css'
 import Avatar from '@mui/material/Avatar';
-import profile from '../../images/profile.png';
+import profile from '../../../images/profile.png';
 import { IconButton } from '@mui/material';
 import { AddCircleOutlineOutlined } from '@mui/icons-material';
 import styled from '@emotion/styled';

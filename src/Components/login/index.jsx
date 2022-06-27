@@ -4,12 +4,11 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import logo from '../../images/logo.png';
 import './LoginPage.css';
-import SignIn from '../Signin-comp/SignIn';
-import SignUp from '../Signup-comp/SignUp';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
-function LoginPage ({ setLoggedIn }) {
+function LoginPage () {
   const [isAccount, setAccount] = useState(true);
-  
 
   return (
     <div>
@@ -30,7 +29,7 @@ function LoginPage ({ setLoggedIn }) {
               <CardContent>
                   {
                     isAccount ? 
-                    <SignIn setLoggedIn={setLoggedIn} setAccount={setAccount}/> 
+                    <SignIn setAccount={setAccount}/> 
                     : <SignUp setAccount={setAccount}/>
                   }
               </CardContent>

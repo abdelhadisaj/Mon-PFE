@@ -1,5 +1,5 @@
 import { Avatar, Paper, Typography, Stack, IconButton} from '@mui/material';
-import profile from '../../images/profile.png';
+import profile from '../../../images/profile.png';
 import React from 'react';
 import { Box, Modal, Button, TextField, Grid, Divider } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';

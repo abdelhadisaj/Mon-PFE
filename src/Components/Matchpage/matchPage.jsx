@@ -1,9 +1,8 @@
 import React from 'react'
-import Match from '../match-componant/Match'
-import ContactList from '../Contactlistmatch-comp/ContactList';
+import Match from './components/match-componant/Match'
+import ContactList from './components/Contactlistmatch-comp/ContactList';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import NavBar from '../Navbar/NavBar';
 
 function MatchPage() {
 
