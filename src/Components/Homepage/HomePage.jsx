@@ -6,12 +6,14 @@ import Publication from './components/Publication';
 import { getAllPosts } from '../../services/post';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from 'react-query'
-
+import NavBar from '../Navbar/NavBar';
 
 function HomePage(){
   const { isLoading, data } = useQuery('allPosts', () => getAllPosts(100,0));
 
   return (
+    <>
+    <NavBar />
     <Grid container>
       <Grid item xs={2}></Grid>
       <Grid item xs={8}>
@@ -25,6 +27,7 @@ function HomePage(){
       </Grid>
       <Grid item xs={2}></Grid>
     </Grid>
+    </>
   )
 }
 

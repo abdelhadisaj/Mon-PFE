@@ -19,26 +19,15 @@ function SignIn({ setAccount }) {
     onSuccess: (data) => {
       sessionStorage.setItem('token',data.data.token);
       sessionStorage.setItem('currentUser',data.data.user._id);
-      queryClient.refetchQueries('currentUser');
+      history('/')
     },
     onError: (err) => {
       console.log(err)
     },
   });
 
-  const { isSuccess } = useQuery('currentUser', getCurrentUser, {
-    enabled: false,
-    retry: false,
-    cacheTime: Infinity,
-  });
-
-  useEffect(()=>{
-    if(isSuccess)history('/');
-  },[isSuccess])
-
   const handleLogin = async () =>{
-      try{
-        console.log(email, password)
+    try{
       await mutation.mutate({email, password});
     } catch(e) {
       console.log(e)

@@ -6,6 +6,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import ContactMessage from './components/Contacts/ContactMessage';
 import MsgContainer from './components/messenger/MsgContainer';
+import NavBar from '../Navbar/NavBar';
 
 const data =[
   {
@@ -135,6 +136,8 @@ function ConversationPage() {
 ]
 
   return (
+    <>
+    <NavBar/>
     <Grid
       container
       direction="row"
@@ -160,7 +163,8 @@ function ConversationPage() {
           )
         }
       </Grid>
-    </Grid>        
+    </Grid> 
+    </>       
   )
 }
 

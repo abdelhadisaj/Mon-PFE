@@ -23,7 +23,7 @@ const settings = [
     { page:'Logout', icon:<LogoutIcon/>}
 ];
 
-const ResponsiveAppBar = ({setLoggedIn}) => {
+const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
 
@@ -47,7 +47,6 @@ const ResponsiveAppBar = ({setLoggedIn}) => {
         }
         if(setting === 'Logout'){
             sessionStorage.clear();
-            setLoggedIn(true);
             setAnchorElUser(null);
             navigate('/login')
         }

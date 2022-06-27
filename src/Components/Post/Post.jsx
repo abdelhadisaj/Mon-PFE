@@ -14,7 +14,6 @@ function Post(props) {
     let navigate = useNavigate();
     const queryClient = useQueryClient();
     const [comment, setComment] = useState('');
-    const [comments, setComments] = useState(undefined);
     const { isLoading, data } = useQuery(['postuser',props.id], () => getUser(props.user));
     const mutationL = useMutation(() => likePost(props.id), {
         onSuccess: (data) => {

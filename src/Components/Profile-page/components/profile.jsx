@@ -1,9 +1,10 @@
 import { Avatar, Paper, Typography, Stack, IconButton} from '@mui/material';
-import profile from '../../../images/profile.png';
 import React from 'react';
 import { Box, Modal, Button, TextField, Grid, Divider } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import { getProfilPostNo } from '../../../services/post'
+import { useQuery } from 'react-query'
 
 const style = {
   position: 'absolute',
@@ -17,11 +18,12 @@ const style = {
   p: 4,
 };
 
-function Profile() {
+function Profile({ user }) {
   const [open, setOpen] = useState(false);
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(user?.username);
   const [city, setCity] = useState('');
   const [img, setImg] = useState(null);
+  const { data, error } = useQuery(['userPostNo',user.username], ()=>getProfilPostNo(user.username));
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -123,30 +125,33 @@ function Profile() {
         </Grid>
       </Box>
     </Modal>
-        <Stack spacing={4}>
+        <Stack spacing={2} direction="column" justifyContent='center' alignItems='center'>
             <Avatar
             alt="photo de profile"
-            src={profile}
+            src={user?.profilePicture}
             sx={{ width: 150, height: 150}}
             >
             </Avatar>
-              <Typography variant='h4' >
-                Username 
+              <Typography variant='h4'>
+                { user?.username }
                 <IconButton onClick={handleOpen}>
                   <EditIcon sx={{ mr: 1 }} />
                 </IconButton>
               </Typography>
         </Stack>
-            <Stack spacing={4} direction="row" mt={2}>
-              <Typography variant='h6' >Publication </Typography>
-              <Typography variant='h6' >Abonnès </Typography>
-              <Typography variant='h6' >abonnements</Typography>
-            </Stack>
-            
-            <Stack spacing={12} direction="row">
-              <Typography variant='h6' >15 </Typography>
-              <Typography variant='h6' >200 </Typography>
-              <Typography variant='h6' >1500</Typography>
+            <Stack spacing={4} direction="row" mt={2} justifyContent='center' alignItems='center'>
+              <Stack spacing={1} direction="column" justifyContent='center' alignItems='center'>
+                <Typography variant='h6' ><u>Publications</u></Typography>
+                <Typography variant='h6' ><strong>{data?.data?.posts}</strong></Typography>
+              </Stack>
+              <Stack spacing={1} direction="column" justifyContent='center' alignItems='center'>
+                <Typography variant='h6' ><u>Followers</u></Typography>
+                <Typography variant='h6' ><strong>{user?.followers?.length}</strong></Typography>
+              </Stack>
+              <Stack spacing={1} direction="column" justifyContent='center' alignItems='center'>
+                <Typography variant='h6' ><u>Followings</u></Typography>
+                <Typography variant='h6' ><strong>{user?.followings?.length}</strong></Typography>
+              </Stack>
             </Stack>
     </Paper>
   )

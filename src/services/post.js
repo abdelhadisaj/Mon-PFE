@@ -96,6 +96,17 @@ export const getAllPosts = (postsNo=100, pageNo=0) =>
     ],
   });
 
+export const getProfilPostNo = (username) =>
+  instance({
+    method: 'GET',
+    url: '/posts/postNo/' + username,
+    transformResponse: [
+      function (data) {
+        return JSON.parse(data);
+      },
+    ],
+  });
+
 export const getPost = (postId) =>
   instance({
     method: 'GET',
