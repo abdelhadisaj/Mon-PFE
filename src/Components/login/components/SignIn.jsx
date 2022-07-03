@@ -21,6 +21,7 @@ function SignIn({ setAccount }) {
       setOpenS(true);
       sessionStorage.setItem('token',data.data.token);
       sessionStorage.setItem('currentUser',data.data.user._id);
+      sessionStorage.setItem('currentUserName',data.data.user.username);
       navigate(0);
     },
     onError: (err) => {

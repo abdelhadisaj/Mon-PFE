@@ -5,6 +5,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { getProfilPostNo } from '../../../services/post';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { modifyUser } from '../../../services/user';
 import { followUser, unfollowUser } from '../../../services/user';
 const style = {
@@ -29,6 +30,7 @@ function Profile({ user }) {
   const [openS, setOpenS] = React.useState(false);
   const [openE, setOpenE] = React.useState(false);
   const [img, setImg] = useState(null);
+  let navigate = useNavigate();
   const queryClient = useQueryClient();
   const { data, error } = useQuery(['userPostNo',user.username], ()=>getProfilPostNo(user.username));
   const mutation = useMutation((values) => modifyUser(user._id, values), {
@@ -240,7 +242,7 @@ function Profile({ user }) {
         { user._id != sessionStorage.getItem('currentUser') && 
           <Stack spacing={4} direction="row" mt={2} justifyContent='center' alignItems='center'>
             <Button variant="contained" onClick={handleFollow} sx={{textTransform: 'none'}}>{isFollowed ? "Unfollow" : "Follow"}</Button>
-            <Button variant="outlined" sx={{textTransform: 'none'}}>Send Message</Button>
+            <Button variant="outlined" onClick={()=> navigate('/messages?receiverid='+user._id)} sx={{textTransform: 'none'}}>Send Message</Button>
           </Stack>
         }
       </Paper>

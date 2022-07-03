@@ -9,7 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../images/logo.png';
 import ListItemText from '@mui/material/ListItemText';
@@ -73,7 +73,8 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0, mr: 6 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Typography variant='h6'>{sessionStorage.getItem('currentUserName')} </Typography>
+                <Avatar alt={sessionStorage.getItem('currentUserName')} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
