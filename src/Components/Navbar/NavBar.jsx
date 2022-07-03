@@ -73,7 +73,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0, mr: 6 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Typography variant='h6'>{sessionStorage.getItem('currentUserName')} </Typography>
+                <Typography variant='h7'>{sessionStorage.getItem('currentUserName')} </Typography>
                 <Avatar alt={sessionStorage.getItem('currentUserName')} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
