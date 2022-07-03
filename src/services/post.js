@@ -63,10 +63,10 @@ export const deletePost = (postId) =>
     ],
   });
 
-export const getCurrentUserTimeline = (postsNo=100, pageNo=0) =>
+export const getCurrentUserTimeline = (username, postsNo=100, pageNo=0) =>
   instance({
     method: 'GET',
-    url: '/posts/timeline?postsNo='+postsNo+'&pageNo='+pageNo,
+    url: '/posts/timeline/'+username+'?postsNo='+postsNo+'&pageNo='+pageNo,
     transformResponse: [
       function (data) {
         return JSON.parse(data);

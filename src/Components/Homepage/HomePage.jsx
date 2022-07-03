@@ -21,7 +21,7 @@ function HomePage(){
         : (
           <>
             {/* <StoryBar/> */}
-            <Publication posts={data.data.posts}/>
+            <Publication posts={data?.data?.posts}/>
           </>
         )}
       </Grid>

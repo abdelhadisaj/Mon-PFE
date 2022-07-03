@@ -1,36 +1,50 @@
 import React, {useState} from 'react'
 import { login } from '../../../services/auth'; 
-import { getCurrentUser } from '../../../services/user'; 
 import { useNavigate } from 'react-router-dom';
-import { Grid, Button, IconButton, Input, InputLabel, FormControl, Divider } from '@mui/material';
+import { Grid, Button, IconButton, Input, InputLabel, FormControl, Divider, Snackbar, Alert } from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
-import { useMutation, useQueryClient, useQuery } from 'react-query'
+import { useMutation } from 'react-query'
 import { useEffect } from 'react';
 
 function SignIn({ setAccount }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
-  const history = useNavigate();
-  const queryClient = useQueryClient();
+  const [openS, setOpenS] = React.useState(false);
+  const [openE, setOpenE] = React.useState(false);
+  const [error, setError] = React.useState('');
+  const navigate = useNavigate();
   const mutation = useMutation((values) => login(values.email, values.password), {
     onSuccess: (data) => {
+      setOpenS(true);
       sessionStorage.setItem('token',data.data.token);
       sessionStorage.setItem('currentUser',data.data.user._id);
-      history('/')
+      navigate(0);
     },
     onError: (err) => {
-      console.log(err)
+      setError(err.response.data.message)
+      setOpenE(true);
     },
   });
 
-  const handleLogin = async () =>{
-    try{
-      await mutation.mutate({email, password});
-    } catch(e) {
-      console.log(e)
+  useEffect(()=>{
+    let e = sessionStorage.getItem('email');
+    let p = sessionStorage.getItem('pwd');
+    if(p && e){
+      setEmail(e)
+      setPassword(p)
+      sessionStorage.clear();
+    }
+  },[])
+
+  const handleLogin = async () => {
+    if(email != '' && password != ''){
+      mutation.mutate({email, password});
+    }else {
+      setError('Please Make Sure To Input Your Email Address And Password Correctly !!!!')
+      setOpenE(true);
     }
   }
 
@@ -38,8 +52,27 @@ function SignIn({ setAccount }) {
     setVisible(!visible);
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenS(false);
+    setOpenE(false);
+  };
+
   return (
-    <Grid
+    <>
+      <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={openS} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          User Logged In Successfully !!!
+        </Alert>
+      </Snackbar>
+      <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={openE} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          {error}
+        </Alert>
+      </Snackbar>
+      <Grid
         container
         direction="column"
         justifyContent="center"
@@ -105,7 +138,8 @@ function SignIn({ setAccount }) {
           Don't have an account ?? 
           <Button variant="text" size="small" onClick={()=>setAccount(false)}>Sign Up</Button>
         </Grid>
-    </Grid>
+      </Grid>
+    </>
   )
 }
 

@@ -66,6 +66,7 @@ function Post(props) {
     return(
         <>
         { !isLoading ? (
+            <Paper elevation={6}>
                 <Stack sx={{mt: 4, mb: 4}} >
                     <Paper>
                         <Button onClick={() => handleProfile(user?._id)} sx={{textTransform: 'none', color: 'black', bgcolor: 'transparent'}}>
@@ -88,7 +89,7 @@ function Post(props) {
                             alignItems="center"
                             spacing={2}
                         >
-                            <img src={props.img} style={{maxWidth: '100%'}}/>
+                            <img src={props.postImage} style={{maxWidth: '100%'}}/>
                         </Stack>
                     </Paper>
                     <Paper sx={{p: 1}} >
@@ -99,11 +100,22 @@ function Post(props) {
                             spacing={2}
                         >
                             <IconButton onClick={handleLike}>
-                                {props.likes.includes(user._id) ? <FavoriteIcon fontSize='large'/> : <FavoriteBorderIcon fontSize='large'/>}
+                                {props.likes.includes(sessionStorage.getItem("currentUser")) ? <FavoriteIcon fontSize='large'/> : <FavoriteBorderIcon fontSize='large'/>}
                             </IconButton>
                             <div style={{"fontWeight":"bold","marginLeft":"5px"}}>
                                 {props.likes.length} Likes.
                             </div>
+                        </Stack>
+                    </Paper>
+                    <Paper sx={{p: 1}} >
+                        <Stack 
+                            direction="row"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            spacing={2}
+                        >
+                            <Typography variant='h7' sx={{fontWeight: 'bold', textDecoration: 'underline'}}>Description :</Typography>
+                            <Typography variant='h7'>{props.desc}</Typography>
                         </Stack>
                     </Paper>
                     <Paper sx={{p: 2, height: '100%'}} >
@@ -167,6 +179,7 @@ function Post(props) {
                         </Stack>
                     </Paper>
                 </Stack>
+            </Paper>
             ) : (
                 <CircularProgress />
         )}

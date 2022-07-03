@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import React, {useState} from 'react'
+import React from 'react'
 import Post from '../../Post/Post'
 
 function ProfilePub({posts}) {

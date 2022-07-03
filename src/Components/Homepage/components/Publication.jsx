@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Post from '../../Post/Post'
 import Fab from '@mui/material/Fab';
-import { Box, Modal, Typography, Button, TextField, Grid, Divider } from '@mui/material';
+import { Box, Modal, Typography, Button, TextField, Grid, Divider, Snackbar, Alert } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import UploadIcon from '@mui/icons-material/Upload';
-import { useQuery, useMutation } from 'react-query'
+import { useQueryClient, useMutation } from 'react-query'
+import { createPost } from '../../../services/post';
 
 const fabStyle = {
   position: 'fixed',
@@ -29,7 +30,20 @@ function Publication({ posts }){
   const [open, setOpen] = React.useState(false);
   const [img, setImg] = useState(null);
   const [desc, setDesc] = useState('');
+  const [openS, setOpenS] = React.useState(false);
+  const [openE, setOpenE] = React.useState(false);
+  const queryClient = useQueryClient();
+  const mutation = useMutation((values) => createPost(values), {
+    onSuccess: (data) => {
+      console.log(data)
+      queryClient.invalidateQueries('allPosts');
+    },
+    onError: (err) => {
+      console.log(err)
+    },
+  });
 
+  const handleCloseS = () => {setOpenE(false);setOpenS(false);};
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleUpload = (file) => {
@@ -42,11 +56,14 @@ function Publication({ posts }){
   }
   const handleShare = () => {
     let data = {
+      userId: sessionStorage.getItem('currentUser'),
       desc: desc,
     };
     let formData = new FormData();
     if (img) formData.append('post', img, img.name);
     formData.append('data', JSON.stringify(data));
+
+    mutation.mutate(formData);
 
     setOpen(false);
     setImg(null);
@@ -55,6 +72,16 @@ function Publication({ posts }){
 
   return (
     <div>
+      <Snackbar onClose={handleCloseS} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={openS} autoHideDuration={4000}>
+        <Alert onClose={handleCloseS} severity="success" sx={{ width: '100%' }}>
+          Post Created Successfully !!!
+        </Alert>
+      </Snackbar>
+      <Snackbar onClose={handleCloseS} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={openE} autoHideDuration={4000}>
+        <Alert onClose={handleCloseS} severity="error" sx={{ width: '100%' }}>
+          Error! Please Retry Again Later !!!
+        </Alert>
+      </Snackbar>
       <Fab variant="extended" color="primary" aria-label="Share" sx={fabStyle} onClick={handleOpen}>
         <UploadIcon sx={{ mr: 1 }} />
         Share
