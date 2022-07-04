@@ -104,7 +104,7 @@ function MsgContainer({ conversation }) {
               </Stack>
             ) : messages?.map((item)=>{
               let send = true;
-              if(item.sender === conversation.receiver.id)send = false;
+              if(item.sender !== sessionStorage.getItem('currentUser'))send = false;
               return (
                 <>
                 { send ? (

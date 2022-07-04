@@ -7,21 +7,20 @@ import ContactMessage from './components/Contacts/ContactMessage';
 import MsgContainer from './components/messenger/MsgContainer';
 import NavBar from '../Navbar/NavBar';
 import { useSearchParams } from 'react-router-dom'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
-import { getCurrentUserConversations, createConversation } from '../../services/conversation';
+import { useQuery, useMutation, useQueryClient, QueryObserver } from 'react-query'
+import { getCurrentUserConversations, createConversation, getConversation } from '../../services/conversation';
 import { useEffect } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 
 
 function ConversationPage() {
   const [searchParams, setSearchParams] = useSearchParams();
+  let uid = searchParams.get("receiverId");
   const [conversation, setConversation]= useState(undefined);
   const queryClient = useQueryClient();
   const { isLoading, data } = useQuery('allConversations', () => getCurrentUserConversations(sessionStorage.getItem('currentUser')));
   const mutation = useMutation((value) => createConversation(sessionStorage.getItem('currentUser'), value), {
     onSuccess: (data) => {
-      console.log(data)
-      //setConversation(true)
       queryClient.invalidateQueries('allConversations')
     },
     onError: (err) => {
@@ -30,9 +29,27 @@ function ConversationPage() {
   });
 
   useEffect(()=>{
-    let uid = searchParams.get("receiverId");
-    if(uid){
-      mutation.mutate(uid);
+    const observer = new QueryObserver(queryClient, {
+      queryKey: ['conversation', uid],
+      queryFn: () => getConversation(sessionStorage.getItem('currentUser'),uid),
+      onError: (err) => {
+        console.log(err);
+      },
+
+    });
+
+    const unsubscribe = observer.subscribe((result) => {
+      if (result.isSuccess) {
+        if(result.data.data.conversation === null){
+          if(uid){
+            mutation.mutate(uid);
+          }
+        }
+      }
+    });
+
+    return () => {
+      unsubscribe();
     }
   },[])
 
@@ -59,13 +76,13 @@ function ConversationPage() {
             >
               <CircularProgress/>
             </Stack>
-            ) : <ContactMessage conversations={conversations} setConversation={setConversation}/> 
+            ) : <ContactMessage convo={uid} conversations={conversations} setConversation={setConversation}/> 
           }
         </Grid>
         <Grid item xs={7} >
           {conversation ? (
               <MsgContainer conversation={conversation}/>
-            ) : isLoading ? (
+            ) : isLoading || uid ? (
               <Stack 
               direction="column"
               justifyContent="center"

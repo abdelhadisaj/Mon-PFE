@@ -10,13 +10,13 @@ import { useQueryClient, QueriesObserver } from 'react-query'
 import { getUser } from '../../../../services/user';
 import CircularProgress from '@mui/material/CircularProgress';
 
-function ContactMessage({conversations, setConversation}) {
+function ContactMessage({ convo, conversations, setConversation }) {
   const [convos, setConvos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const queryClient = useQueryClient();
 
-  const handleConversation = (convo) => {
-    setConversation(convo)
+  const handleConversation = (con) => {
+    setConversation(con)
   }
 
   useEffect(() => {
@@ -34,6 +34,7 @@ function ContactMessage({conversations, setConversation}) {
       let c = result.map(item => {
         if(item.isSuccess){
           let r = users.find(x => x.receiver === item.data.data.user._id);
+          if(convo === item.data.data.user._id) setConversation({ ...r , receiver: item.data.data.user })
           return { ...r , receiver: item.data.data.user };
         }
         return null;

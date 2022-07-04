@@ -28,7 +28,7 @@ export const getCurrentUserConversations = (userId) =>
 
 export const getConversation = (userId1, userId2) =>
   instance({
-    method: 'POST',
+    method: 'GET',
     url: '/conversations/find/'+userId1+'/'+userId2,
     transformResponse: [
       function (data) {
