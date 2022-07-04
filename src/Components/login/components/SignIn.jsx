@@ -22,7 +22,7 @@ function SignIn({ setAccount }) {
       sessionStorage.setItem('token',data.data.token);
       sessionStorage.setItem('currentUser',data.data.user._id);
       sessionStorage.setItem('currentUserName',data.data.user.username);
-      navigate('/');
+      navigate('/home');
     },
     onError: (err) => {
       setError(err.response.data.message)
