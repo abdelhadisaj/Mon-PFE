@@ -3,7 +3,7 @@ import HomePage from './Components/Homepage/HomePage';
 import LoginPage from './Components/login';
 // import MatchPage from './Components/Matchpage/matchPage';
 import ConversationPage from './Components/Conversationpage/ConversPage';
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {BrowserRouter, HashRouter,  Routes, Route, Navigate} from 'react-router-dom';
 import ProfilePage from './Components/Profile-page/ProfilePage';
 
 
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -39,7 +39,7 @@ function App() {
             element={<Navigate to="/" replace/> } 
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }
