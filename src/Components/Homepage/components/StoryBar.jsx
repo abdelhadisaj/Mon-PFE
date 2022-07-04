@@ -1,62 +1,15 @@
 import React, { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import profile from '../../../images/profile.png';
 import { IconButton } from '@mui/material';
 import { AddCircleOutlineOutlined } from '@mui/icons-material';
 import styled from '@emotion/styled';
-
-
-const data =[
-  {
-      "username":"username1",
-      "storyimg":"../../images/profile.png"
-  },
-
-  {
-      "username":"username2",
-      "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-      "username":"username1",
-      "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-    "username":"username1",
-    "storyimg":"../../images/profile.png"
-  },
-  {
-      "username":"username3",
-      "storyimg":"../../images/profile.png"
-  }
-
-];
 
 const Input = styled('input')({
   display: 'none',
 });
 
 function StoryBar() {
-  const [storyList, setStoryList] = useState(data);
+  const [storyList, setStoryList] = useState([]);
 
   return (
     <div className='storybar_container'>
@@ -70,7 +23,7 @@ function StoryBar() {
           storyList.map((item,index)=>{
             return (
               <div className='story'>
-                <Avatar className='story_photo' src={profile}/>
+                <Avatar className='story_photo'/>
                 <div className='story_username'>{item.username}</div>
               </div>
             )  
