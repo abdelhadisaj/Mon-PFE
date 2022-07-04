@@ -16,6 +16,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
+import { useQuery } from 'react-query';
+import { getUser } from '../../services/user';
 
 const pages = ['Home', 'Conversations'];
 const settings = [
@@ -26,13 +28,13 @@ const settings = [
 const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
+  const { data } = useQuery('currentUser', () => getUser(sessionStorage.getItem('currentUser')));
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
   const handleNavMenu = (page) => {
-    console.log(page)
     if(page){
         if(page === 'Home')navigate('/');
         if(page === 'Conversations')navigate('/messages');
@@ -54,6 +56,8 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null);
   };
 
+  let currentUser = data?.data?.user;
+
   return (
     <AppBar position="static" sx={{bgcolor: 'white'}}>
       <Container maxWidth="xl">
@@ -70,11 +74,11 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0, mr: 6 }}>
+          <Box sx={{ flexGrow: 0, mr: 6, display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
+          <Typography variant='h7' sx={{ mr: 2, color: 'black', display: 'block' }}>{sessionStorage.getItem('currentUserName')} </Typography>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Typography variant='h7'>{sessionStorage.getItem('currentUserName')} </Typography>
-                <Avatar alt={sessionStorage.getItem('currentUserName')} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={sessionStorage.getItem('currentUserName')} src={currentUser?.profilePicture} />
               </IconButton>
             </Tooltip>
             <Menu

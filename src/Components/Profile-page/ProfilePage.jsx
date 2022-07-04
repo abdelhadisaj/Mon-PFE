@@ -8,6 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useSearchParams } from 'react-router-dom'
 import NavBar from '../Navbar/NavBar';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -46,7 +47,14 @@ function ProfilePage() {
       isLoading ? (
         <>
           <NavBar/>
-          <CircularProgress/>
+          <Stack 
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ width: '100%', height: '100vh'}}
+          >
+            <CircularProgress size="15vh"/>
+          </Stack>
         </>
       
       ) : (
