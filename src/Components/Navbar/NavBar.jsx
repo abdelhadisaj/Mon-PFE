@@ -50,7 +50,7 @@ const ResponsiveAppBar = () => {
         if(setting === 'Logout'){
             sessionStorage.clear();
             setAnchorElUser(null);
-            navigate(0)
+            navigate('/')
         }
     }
     setAnchorElUser(null);
