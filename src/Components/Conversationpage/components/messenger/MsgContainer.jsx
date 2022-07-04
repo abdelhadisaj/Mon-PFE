@@ -2,11 +2,13 @@ import { Paper, IconButton, TextField, Avatar, Stack, Divider } from '@mui/mater
 import Typography  from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import profile from '../../../../images/profile.png';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
 import React, { useState } from 'react';
 import './msgcontainer.css';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { createMessage, getConversationMessages } from '../../../../services/message';
 
 const Send = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
@@ -26,11 +28,25 @@ const Receive = styled(Paper)(({ theme }) => ({
   marginBottom: '1%',
 }));
 
-function MsgContainer({messages, user}) {
+function MsgContainer({ conversation }) {
   const [message, setMessage] = useState('');
+  const queryClient = useQueryClient();
+  const { isLoading, data } = useQuery(['allMessages',conversation._id], () => getConversationMessages(conversation._id));
+  const mutation = useMutation((value) => createMessage(sessionStorage.getItem('currentUser'), conversation._id, value), {
+    onSuccess: (data) => {
+      setMessage('');
+      queryClient.invalidateQueries(['allMessages',conversation._id])
+    },
+    onError: (err) => {
+      console.log(err)
+    },
+  });
+
   const handleMessage = () => {
-    console.log(message);
+    mutation.mutate(message)
   }
+
+  let messages = data?.data?.Message;
 
   return (
     <Card
@@ -38,6 +54,7 @@ function MsgContainer({messages, user}) {
           width: '100%',
           height: '100%',
           maxHeight: '80vh',
+          minHeight: '80vh',
           mt: 3,
           mb: 3,
           p: 1, 
@@ -59,14 +76,14 @@ function MsgContainer({messages, user}) {
         >
           <Avatar
             alt="Contact"
-            src={profile}
+            src={conversation.receiver.profilePicture}
           />
           <Typography variant="h6" component="div">
-              {user.username}
+              {conversation.receiver.username}
           </Typography>
         </Stack>
         <Divider orientation="horizontal" flexItem />
-        <CardContent sx={{ width: '100%', height: '100%'}}>
+        <CardContent sx={{ width: '100%', height: '100%', minHeight: '65vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
           <Stack 
             direction="column"
             justifyContent="flex-end"
@@ -74,16 +91,23 @@ function MsgContainer({messages, user}) {
             sx={{
               width: '100%',
               height: '80%',
-          }}
+            }}
           >
-            {messages.map((item)=>{
+            { isLoading ? (
+              <Stack 
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ width: '100%', height: '80vh'}}
+              >
+                <CircularProgress/>
+              </Stack>
+            ) : messages?.map((item)=>{
               let send = true;
-              console.log(1)
-              if(item.senderId === user.id)send = false;
+              if(item.sender === conversation.receiver.id)send = false;
               return (
                 <>
-                {
-                  send ? (
+                { send ? (
                     <Stack 
                       direction="row"
                       justifyContent="flex-end"

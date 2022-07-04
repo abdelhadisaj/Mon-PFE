@@ -242,7 +242,7 @@ function Profile({ user }) {
         { user._id != sessionStorage.getItem('currentUser') && 
           <Stack spacing={4} direction="row" mt={2} justifyContent='center' alignItems='center'>
             <Button variant="contained" onClick={handleFollow} sx={{textTransform: 'none'}}>{isFollowed ? "Unfollow" : "Follow"}</Button>
-            <Button variant="outlined" onClick={()=> navigate('/messages?receiverid='+user._id)} sx={{textTransform: 'none'}}>Send Message</Button>
+            <Button variant="outlined" onClick={()=> navigate('/messages?receiverId='+user._id)} sx={{textTransform: 'none'}}>Send Message</Button>
           </Stack>
         }
       </Paper>

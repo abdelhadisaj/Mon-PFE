@@ -1,6 +1,6 @@
 import instance from './api';
 
-export const createConversation = (sender, conversationId, text) =>
+export const createMessage = (sender, conversationId, text) =>
   instance({
     method: 'POST',
     url: '/messages/',
@@ -19,7 +19,7 @@ export const createConversation = (sender, conversationId, text) =>
 export const getConversationMessages = (conversationId) =>
   instance({
     method: 'GET',
-    url: '/conversations/'+conversationId,
+    url: '/messages/'+conversationId,
     transformResponse: [
       function (data) {
         return JSON.parse(data);
