@@ -31,7 +31,10 @@ const Receive = styled(Paper)(({ theme }) => ({
 function MsgContainer({ conversation }) {
   const [message, setMessage] = useState('');
   const queryClient = useQueryClient();
-  const { isLoading, data } = useQuery(['allMessages',conversation._id], () => getConversationMessages(conversation._id));
+  const { isLoading, data } = useQuery(['allMessages',conversation._id], () => getConversationMessages(conversation._id), {
+    refetchInterval: 500,
+    refetchIntervalInBackground: true,
+  });
   const mutation = useMutation((value) => createMessage(sessionStorage.getItem('currentUser'), conversation._id, value), {
     onSuccess: (data) => {
       setMessage('');
