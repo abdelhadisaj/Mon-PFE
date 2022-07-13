@@ -13,7 +13,7 @@ import { createMessage, getConversationMessages } from '../../../../services/mes
 const Send = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: 'white',
-  backgroundColor: 'cyan',
+  backgroundColor: '#ffffff',
   padding: '1%',
   marginRight: '2%',
   marginBottom: '1%',
@@ -22,7 +22,7 @@ const Send = styled(Paper)(({ theme }) => ({
 const Receive = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: 'white',
-  backgroundColor: 'lightgray',
+  backgroundColor: '#47555c',
   padding: '1%',
   marginLeft: '2%',
   marginBottom: '1%',
